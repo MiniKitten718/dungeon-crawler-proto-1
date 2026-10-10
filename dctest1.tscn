@@ -1,17 +1,32 @@
 [gd_scene format=3 uid="uid://rsn3gsaqxu3f"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_m1leb"]
+[ext_resource type="MeshLibrary" uid="uid://4jqoj1ra2fse" path="res://dungeon_tiles.tres" id="1_nutpd"]
+[ext_resource type="Script" uid="uid://bl04arfpbtcmt" path="res://player.gd" id="2_bp8kg"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_q6l40"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_m1leb"]
+radius = 0.25
+height = 1.0
 
-[node name="Node3D" type="Node3D" unique_id=444860647]
+[node name="Main" type="Node3D" unique_id=444860647]
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=508859579]
+[node name="Dungeon" type="GridMap" parent="." unique_id=827373675]
+mesh_library = ExtResource("1_nutpd")
+data = {
+"cells": PackedInt32Array(65534, 1, 1441794, 1, 65534, 1441794, 65533, 1, 1441794, 65533, 0, 1441794, 65533, 65533, 1441794, 65534, 65533, 1441794, 65535, 65533, 1441794, 0, 65533, 1441794, 1, 65533, 1441794, 2, 65533, 1441794, 2, 65534, 1441794, 2, 65535, 1441794, 2, 0, 1441794, 2, 1, 1441794, 2, 2, 1441794, 65532, 65533, 1441794, 65531, 2, 1441794, 65531, 1, 1441794, 65531, 0, 1441794, 65531, 65535, 1441794, 65531, 65534, 1441794, 65531, 65533, 1441794, 2, 3, 1441794, 1, 3, 1441794, 0, 3, 1441794, 65535, 3, 1441794, 65534, 3, 1441794, 65533, 3, 1441794, 65532, 3, 1441794, 65531, 3, 1441794, -5, 65533, 1441794, -5, 65534, 1441794, -5, 65535, 1441794, -5, 0, 1441794, -5, 1, 1441794, -5, 2, 1441794, -5, 3, 1441794, -4, 65533, 1441794, -4, 65534, 1441794, -4, 65535, 1441794, -4, 0, 1441794, -4, 1, 1441794, -4, 2, 1441794, -4, 3, 1441794, -3, 65533, 1441794, -3, 65534, 1441794, -3, 65535, 1441794, -3, 0, 1441794, -3, 1, 1441794, -3, 2, 1441794, -3, 3, 1441794, -2, 65533, 1441794, -2, 65534, 1441794, -2, 65535, 1441794, -2, 0, 1441794, -2, 1, 1441794, -2, 2, 1441794, -2, 3, 1441794, -1, 65533, 1441794, -1, 65534, 1441794, -1, 65535, 1441794, -1, 0, 1441794, -1, 1, 1441794, -1, 2, 1441794, -1, 3, 1441794, -65536, 65533, 1441794, -65536, 65534, 1441794, -65536, 65535, 1441794, -65536, 0, 1441794, -65536, 1, 1441794, -65536, 2, 1441794, -65536, 3, 1441794, -65535, 65533, 1441794, -65535, 65534, 1441794, -65535, 65535, 1441794, -65535, 0, 1441794, -65535, 1, 1441794, -65535, 2, 1441794, -65535, 3, 1441794, -65534, 65533, 1441794, -65534, 65534, 1441794, -65534, 65535, 1441794, -65534, 0, 1441794, -65534, 1, 1441794, -65534, 2, 1441794)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=851231433]
-transform = Transform3D(7.612598, 0, 0, 0, 7.612598, 0, 0, 0, 7.612598, 0, 0, 0)
-shape = SubResource("BoxShape3D_m1leb")
+[node name="Player" type="Node3D" parent="." unique_id=1690871985]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("2_bp8kg")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=480503940]
-transform = Transform3D(7.476997, 0, 0, 0, 7.476997, 0, 0, 0, 7.476997, 0, 0, 0)
-mesh = SubResource("BoxMesh_q6l40")
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=40106254]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.82934594, 0)
+current = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=1506732551]
+mesh = SubResource("CapsuleMesh_m1leb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1340260080]
+transform = Transform3D(1, 0, 0, 0, 0.002302005, 0.9999974, 0, -0.9999974, 0.002302005, 0.40293694, 4.402131, 0)
+shadow_enabled = true

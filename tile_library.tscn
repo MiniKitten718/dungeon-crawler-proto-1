@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://5kkol70ctw76"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_m1leb"]
+size = Vector3(2, 2, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_q6l40"]
+size = Vector3(2, 0.2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_seupw"]
+size = Vector3(2, 2, 2)
+
+[node name="Node3D" type="Node3D" unique_id=1388072469]
+
+[node name="wall" type="MeshInstance3D" parent="." unique_id=1450976421]
+mesh = SubResource("BoxMesh_m1leb")
+
+[node name="floor" type="MeshInstance3D" parent="." unique_id=1985026645]
+mesh = SubResource("BoxMesh_q6l40")
+
+[node name="block" type="MeshInstance3D" parent="." unique_id=977946119]
+visible = false
+mesh = SubResource("BoxMesh_seupw")
